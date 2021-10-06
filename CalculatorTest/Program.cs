@@ -7,17 +7,17 @@ using System.Xml.Linq;
 
 namespace CalculatorTest
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
-        {
+        {         
             bool showMenu = true;
             while (showMenu)
             {
                 showMenu = MainMenu();
             }
-        }
-        private static bool MainMenu()
+        }        
+         public static bool MainMenu()
         {
             Console.Clear();
             Console.WriteLine("Choose an option:");
@@ -28,8 +28,8 @@ namespace CalculatorTest
             Console.WriteLine(" 4) Division");
 
             Console.Write("\r\nSelect an option: ");
-
-            switch (Console.ReadLine())
+            string input = Console.ReadLine();
+            switch (input)
             {
                 case "0":
                     return false;
