@@ -9,6 +9,8 @@ namespace CalculatorXUnitTests
         public static Calculator calculator = new Calculator();
         [Theory]
         [InlineData(new double[] { 2, 6 }, 8)]
+        [InlineData(new double[] { 2, 3, -7 }, -2)]
+        [InlineData(new double[] { 2, 61, -67 }, -4)]
         [InlineData(new double[] { 32.55, 2.22 }, 34.77)]
         public void Add_(double[] array, double expected)
         {
@@ -22,6 +24,8 @@ namespace CalculatorXUnitTests
         }
         [Theory]
         [InlineData(new double[] { 2, 6 }, -4)]
+        [InlineData(new double[] { 2, 6, -3 }, -1)]
+        [InlineData(new double[] { 2, -4, 6 }, 0)]
         [InlineData(new double[] { 32.55, 2.22 }, 30.33)]
         public void Subtract_(double[] array, double expected)
         {
@@ -34,14 +38,16 @@ namespace CalculatorXUnitTests
             Assert.Equal(expected, actual, 2);
         }
         [Theory]
-        [InlineData(2, 8, 16)]
-        [InlineData(32.55, 2.22, 72.26)]
-        public void Multiply_(double x, double y, double expected)
+        [InlineData(new double[] { 2, 8 }, 16)]
+        [InlineData(new double[] { 2, 8, -2 }, -32)]
+        [InlineData(new double[] { 2, 8, -3 }, -48)]
+        [InlineData(new double[] { 32.55, 2.22 }, 72.26)]
+        public void Multiply_(double[] array, double expected)
         {
             // Arrange
 
             // Act
-            double actual = calculator.Multiply(x, y);
+            double actual = calculator.Multiply(array);
 
             // Assert
             Assert.Equal(expected, actual, 2);

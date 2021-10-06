@@ -52,7 +52,95 @@ namespace CalculatorTest
         public static double output_1 = 0;
         public static double output_2 = 0;
         public static Calculator calc = new();
+        public static double[] array;
+        public static string val;
         static void Duplicates()
+        {
+            bool TryAgain = true;
+
+            int count = 0;
+            while (TryAgain)
+            {
+                val = Console.ReadLine();
+                val = val.Trim();
+                if (val.Length < 3 || !val.Contains(','))
+                {
+                    count++;
+                }
+                StringBuilder sb = new StringBuilder(val);
+                int sbLength = sb.Length;
+                for (int i = 0; i < sbLength; i++)
+                {
+                    if (sb[i] == ' ')
+                    {
+                        sb.Remove(sb[i], 1);
+                        sbLength--;
+                    }
+                }
+                val = sb.ToString();
+                string[] digits = val.Split(",");
+                for (int i = 0; i < digits.Length; i++)
+                {
+                    StringBuilder st = new StringBuilder(digits[i]);
+                    st.Replace(".", ",");
+                    digits[i] = st.ToString();
+                }
+                foreach (string digit in digits)
+                {
+
+                    if (!(double.TryParse(digit.ToString(), out var parsedNumber)))
+                    {
+                        count++;
+                        break;
+                    }
+                }
+                if (count == 0)
+                {
+                    array = new double[digits.Length];
+                    for (int i = 0; i < digits.Length; i++)
+                    {
+                        array[i] = Double.Parse(digits[i].Trim());
+                    }
+                    TryAgain = false;
+                }
+                else
+                {
+                    Console.WriteLine("You have to enter more than one valid number and put ',' between them");
+                    count = 0;
+                }
+            }
+        }
+        private static string Addition()
+        {
+            Console.Clear();
+            Console.WriteLine("Enter your numbers you want to add,put ',' between them");
+            Console.WriteLine("For example 2.3,5.6 or -3.2,+5.6");
+            Duplicates();
+            Console.WriteLine($"Result: {calc.Add(array)}");
+            Console.Write("\r\nPress Enter to return to Main Menu");
+            return Console.ReadLine();
+        }
+        private static string Subtraction()
+        {
+            Console.Clear();
+            Console.WriteLine("Enter your numbers you want to subtract,put ',' between them");
+            Console.WriteLine("For example 2.3,5.6 or -3.2,+5.6");
+            Duplicates();
+            Console.WriteLine($"Result: {calc.Subtract(array)}");
+            Console.Write("\r\nPress Enter to return to Main Menu");
+            return Console.ReadLine();
+        }
+        private static string Multipliaction()
+        {
+            Console.Clear();
+            Console.WriteLine("Enter your numbers you want to multiply,put ',' between them");
+            Console.WriteLine("For example 2.3,5.6 or -3.2,+5.6");
+            Duplicates();
+            Console.WriteLine($"Result: {calc.Multiply(array)}");
+            Console.Write("\r\nPress Enter to return to Main Menu");
+            return Console.ReadLine();
+        }
+        private static string Division()
         {
             Console.Clear();
             Console.WriteLine("Enter your first number");
@@ -71,35 +159,6 @@ namespace CalculatorTest
                 Console.WriteLine("Enter a valid number");
                 val_2 = Console.ReadLine();
             }
-        }
-
-
-        private static string Addition()
-        {
-            Duplicates();
-            double[] array = new double[2] { output_1, output_2 };
-            Console.WriteLine($"Result: {calc.Add(array)}");
-            Console.Write("\r\nPress Enter to return to Main Menu");
-            return Console.ReadLine();
-        }
-        private static string Subtraction()
-        {
-            Duplicates();
-            double[] array = new double[2] { output_1, output_2 };
-            Console.WriteLine($"Result: {calc.Subtract(array)}");
-            Console.Write("\r\nPress Enter to return to Main Menu");
-            return Console.ReadLine();
-        }
-        private static string Multipliaction()
-        {
-            Duplicates();
-            Console.WriteLine($"Result: {calc.Multiply(output_1, output_2)}");
-            Console.Write("\r\nPress Enter to return to Main Menu");
-            return Console.ReadLine();
-        }
-        private static string Division()
-        {
-            Duplicates();
             if (output_2 != 0)
             {
                 Console.WriteLine($"Result: {calc.Divide(output_1, output_2)}");

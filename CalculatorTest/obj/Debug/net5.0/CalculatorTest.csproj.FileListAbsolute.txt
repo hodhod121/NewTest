@@ -13,3 +13,4 @@ C:\Users\hodho\source\repos\Xtest\CalculatorTest\obj\Debug\net5.0\CalculatorTest
 C:\Users\hodho\source\repos\Xtest\CalculatorTest\obj\Debug\net5.0\ref\CalculatorTest.dll
 C:\Users\hodho\source\repos\Xtest\CalculatorTest\obj\Debug\net5.0\CalculatorTest.pdb
 C:\Users\hodho\source\repos\Xtest\CalculatorTest\obj\Debug\net5.0\CalculatorTest.genruntimeconfig.cache
+C:\Users\hodho\source\repos\Xtest\CalculatorTest\obj\Debug\net5.0\CalculatorTest.csproj.AssemblyReference.cache

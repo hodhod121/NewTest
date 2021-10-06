@@ -15,12 +15,22 @@ namespace CalculatorTest
 
         public double Subtract(double[] array)
         {
-            return array[0] - array[1];
+            double sum = array[0];
+            for (int i = 1; i < array.Length; i++)
+            {
+                sum -= array[i];
+            }
+            return sum;
         }
 
-        public double Multiply(double x, double y)
+        public double Multiply(double[] array)
         {
-            return x * y;
+            double sum = array[0];
+            for (int i = 1; i < array.Length; i++)
+            {
+                sum *= array[i];
+            }
+            return sum;
         }
 
         public double Divide(double x, double y)
@@ -31,7 +41,6 @@ namespace CalculatorTest
             }
             else
             {
-                // Custom business logic for divide by zero
                 return double.MaxValue;
             }
         }
